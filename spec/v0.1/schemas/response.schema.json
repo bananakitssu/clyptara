@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:clyptara:spec:v0.1:response-schema",
+  "title": "Clyptara v0.1 Response",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["protocol", "type", "id", "result"],
+      "properties": {
+        "protocol": { "const": "clyptara/0.1" },
+        "type": { "const": "response" },
+        "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "result": {}
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["protocol", "type", "id", "error"],
+      "properties": {
+        "protocol": { "const": "clyptara/0.1" },
+        "type": { "const": "error" },
+        "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "error": {
+          "type": "object",
+          "required": ["code", "message"],
+          "properties": { "code": { "type": "string" }, "message": { "type": "string" }, "details": {} },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

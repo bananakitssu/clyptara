@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:clyptara:spec:v0.1:request-schema",
+  "title": "Clyptara v0.1 Request",
+  "type": "object",
+  "required": ["protocol", "type", "id", "method"],
+  "properties": {
+    "protocol": { "const": "clyptara/0.1" },
+    "type": { "const": "request" },
+    "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "method": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "params": { "type": "object" }
+  },
+  "additionalProperties": false
+}
